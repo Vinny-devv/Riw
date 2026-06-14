@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vinny Web — عالم الروايات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-v">V</span>inny <span class="logo-web">Web</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">الرئيسية</a>
+        <a href="novels.html">المكتبة</a>
+        <a href="categories.html">التصنيفات</a>
+        <a href="admin.html" class="btn-admin">لوحة الإدارة</a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">الرئيسية</a>
+      <a href="novels.html">المكتبة</a>
+      <a href="categories.html">التصنيفات</a>
+      <a href="admin.html">لوحة الإدارة</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <header class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ عالم لا حدود له ✦</p>
+      <h1 class="hero-title">
+        اكتشف روايات<br/>
+        <span class="hero-highlight">تأخذك بعيداً</span>
+      </h1>
+      <p class="hero-sub">قصص تُكتب لتبقى — خيال، رومانسية، إثارة، وأكثر</p>
+      <div class="hero-actions">
+        <a href="novels.html" class="btn-primary">تصفح المكتبة</a>
+        <a href="categories.html" class="btn-ghost">التصنيفات</a>
+      </div>
+    </div>
+    <div class="hero-books">
+      <div class="floating-book b1"></div>
+      <div class="floating-book b2"></div>
+      <div class="floating-book b3"></div>
+    </div>
+  </header>
+
+  <!-- ========== STATS ========== -->
+  <section class="stats-bar">
+    <div class="stat"><span class="stat-num" data-target="0" id="stat-novels">0</span><span class="stat-label">رواية</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num" data-target="0" id="stat-chapters">0</span><span class="stat-label">فصل</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num" data-target="0" id="stat-readers">0</span><span class="stat-label">قارئ</span></div>
+  </section>
+
+  <!-- ========== FEATURED ========== -->
+  <section class="section featured-section">
+    <div class="section-header">
+      <h2 class="section-title">✦ الروايات المميزة</h2>
+      <a href="novels.html" class="see-all">عرض الكل →</a>
+    </div>
+    <div class="novels-grid" id="featuredGrid">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- ========== LATEST ========== -->
+  <section class="section latest-section">
+    <div class="section-header">
+      <h2 class="section-title">✦ أحدث الإضافات</h2>
+      <a href="novels.html" class="see-all">عرض الكل →</a>
+    </div>
+    <div class="novels-list" id="latestList">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- ========== CATEGORIES ========== -->
+  <section class="section cats-section">
+    <h2 class="section-title center">✦ تصفح حسب التصنيف</h2>
+    <div class="cats-grid" id="catsGrid">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-v">V</span>inny <span class="logo-web">Web</span>
+        <p>موقعك الأول لقراءة الروايات العربية</p>
+      </div>
+      <div class="footer-links">
+        <h4>روابط سريعة</h4>
+        <a href="index.html">الرئيسية</a>
+        <a href="novels.html">المكتبة</a>
+        <a href="categories.html">التصنيفات</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Vinny Web — جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
