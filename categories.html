@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>التصنيفات — Vinny Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-v">V</span>inny <span class="logo-web">Web</span></a>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="novels.html">المكتبة</a>
+        <a href="categories.html" class="active">التصنيفات</a>
+        <a href="admin.html" class="btn-admin">لوحة الإدارة</a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">الرئيسية</a>
+      <a href="novels.html">المكتبة</a>
+      <a href="categories.html">التصنيفات</a>
+      <a href="admin.html">لوحة الإدارة</a>
+    </div>
+  </nav>
+
+  <div class="page-banner">
+    <h1>التصنيفات</h1>
+    <p>اختر التصنيف الذي يناسب ذوقك</p>
+  </div>
+
+  <section class="section">
+    <div class="cats-grid large" id="allCatsGrid"></div>
+  </section>
+
+  <div class="cat-novels-section" id="catNovelsSection" style="display:none">
+    <div class="section-header">
+      <h2 class="section-title" id="catNovelsTitle"></h2>
+      <button class="btn-ghost" onclick="closeCatNovels()">إغلاق ✖</button>
+    </div>
+    <div class="novels-grid" id="catNovelsGrid"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom"><p>© 2025 Vinny Web</p></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', loadCategoriesPage);
+  </script>
+</body>
+</html>

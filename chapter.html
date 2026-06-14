@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">فصل — Vinny Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="reading-mode">
+
+  <!-- Reading toolbar -->
+  <div class="reading-toolbar">
+    <a href="#" id="backToNovel" class="back-btn">← العودة للرواية</a>
+    <div class="reading-controls">
+      <button onclick="changeFontSize(-1)" title="تصغير الخط">A-</button>
+      <button onclick="changeFontSize(1)" title="تكبير الخط">A+</button>
+      <button onclick="toggleTheme()" id="themeBtn" title="تغيير السمة">🌙</button>
+    </div>
+  </div>
+
+  <!-- Reading Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="readingProgress"></div>
+  </div>
+
+  <!-- Chapter Content -->
+  <main class="chapter-container" id="chapterContent">
+    <!-- Filled by JS -->
+  </main>
+
+  <!-- Chapter Navigation -->
+  <div class="chapter-nav" id="chapterNav">
+    <!-- Filled by JS -->
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom"><p>© 2025 Vinny Web</p></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', loadChapter);
+
+    // Reading progress
+    window.addEventListener('scroll', () => {
+      const el = document.documentElement;
+      const scrolled = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+      document.getElementById('readingProgress').style.width = scrolled + '%';
+    });
+
+    let fontSize = 18;
+    function changeFontSize(delta) {
+      fontSize = Math.min(26, Math.max(14, fontSize + delta));
+      document.querySelector('.chapter-body').style.fontSize = fontSize + 'px';
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light-reading');
+      const btn = document.getElementById('themeBtn');
+      btn.textContent = document.body.classList.contains('light-reading') ? '🌙' : '☀️';
+    }
+  </script>
+</body>
+</html>

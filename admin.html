@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة الإدارة — Vinny Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-v">V</span>inny <span class="logo-web">Web</span></a>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="novels.html">المكتبة</a>
+        <a href="admin.html" class="active btn-admin">لوحة الإدارة</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="admin-container">
+    <aside class="admin-sidebar">
+      <h3>لوحة التحكم</h3>
+      <nav class="admin-nav">
+        <a href="#" class="admin-link active" onclick="showTab('novels')">📚 الروايات</a>
+        <a href="#" class="admin-link" onclick="showTab('addNovel')">➕ إضافة رواية</a>
+        <a href="#" class="admin-link" onclick="showTab('addChapter')">📝 إضافة فصل</a>
+        <a href="#" class="admin-link" onclick="showTab('categories')">🏷️ التصنيفات</a>
+      </nav>
+      <div class="admin-stats-mini">
+        <div><span id="aStat-novels">0</span> رواية</div>
+        <div><span id="aStat-chapters">0</span> فصل</div>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+
+      <!-- Tab: Novels List -->
+      <div id="tab-novels" class="admin-tab active">
+        <h2>📚 إدارة الروايات</h2>
+        <div class="admin-novels-list" id="adminNovelsList"></div>
+      </div>
+
+      <!-- Tab: Add Novel -->
+      <div id="tab-addNovel" class="admin-tab">
+        <h2>➕ إضافة / تعديل رواية</h2>
+        <div class="admin-form">
+          <input type="hidden" id="editNovelId" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>عنوان الرواية *</label>
+              <input type="text" id="novelTitle" placeholder="أدخل عنوان الرواية" />
+            </div>
+            <div class="form-group">
+              <label>الكاتب *</label>
+              <input type="text" id="novelAuthor" placeholder="اسم الكاتب" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>وصف الرواية *</label>
+            <textarea id="novelDesc" rows="4" placeholder="اكتب وصفاً مميزاً للرواية..."></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>رابط الغلاف (صورة URL)</label>
+              <input type="text" id="novelCover" placeholder="https://..." />
+            </div>
+            <div class="form-group">
+              <label>حالة الرواية</label>
+              <select id="novelStatus">
+                <option value="مستمرة">مستمرة</option>
+                <option value="مكتملة">مكتملة</option>
+                <option value="متوقفة">متوقفة</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>التصنيفات (افصل بينها بفاصلة)</label>
+            <input type="text" id="novelCats" placeholder="خيال، رومانسية، إثارة" />
+          </div>
+          <div class="form-group">
+            <label>هل الرواية مميزة؟</label>
+            <label class="toggle-label">
+              <input type="checkbox" id="novelFeatured" />
+              <span class="toggle-switch"></span>
+              تمييز الرواية
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary" onclick="saveNovel()">💾 حفظ الرواية</button>
+            <button class="btn-ghost" onclick="clearNovelForm()">✖ مسح</button>
+          </div>
+          <div id="novelFormMsg" class="form-msg"></div>
+        </div>
+      </div>
+
+      <!-- Tab: Add Chapter -->
+      <div id="tab-addChapter" class="admin-tab">
+        <h2>📝 إضافة / تعديل فصل</h2>
+        <div class="admin-form">
+          <input type="hidden" id="editChapterId" />
+          <div class="form-row">
+            <div class="form-group">
+              <label>اختر الرواية *</label>
+              <select id="chapterNovelId">
+                <option value="">-- اختر رواية --</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>رقم الفصل *</label>
+              <input type="number" id="chapterNumber" placeholder="1" min="1" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>عنوان الفصل *</label>
+            <input type="text" id="chapterTitle" placeholder="عنوان الفصل" />
+          </div>
+          <div class="form-group">
+            <label>محتوى الفصل *</label>
+            <textarea id="chapterContent" rows="15" placeholder="اكتب محتوى الفصل هنا..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>ملاحظة للقراء (اختياري)</label>
+            <input type="text" id="chapterNote" placeholder="ملاحظة اختيارية..." />
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary" onclick="saveChapter()">💾 حفظ الفصل</button>
+            <button class="btn-ghost" onclick="clearChapterForm()">✖ مسح</button>
+          </div>
+          <div id="chapterFormMsg" class="form-msg"></div>
+        </div>
+      </div>
+
+      <!-- Tab: Categories -->
+      <div id="tab-categories" class="admin-tab">
+        <h2>🏷️ إدارة التصنيفات</h2>
+        <div class="admin-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>إضافة تصنيف جديد</label>
+              <input type="text" id="newCatName" placeholder="اسم التصنيف" />
+            </div>
+            <div class="form-group">
+              <label>الأيقونة (emoji)</label>
+              <input type="text" id="newCatIcon" placeholder="📖" />
+            </div>
+          </div>
+          <button class="btn-primary" onclick="addCategory()">إضافة تصنيف</button>
+          <div id="catFormMsg" class="form-msg"></div>
+        </div>
+        <div class="admin-cats-list" id="adminCatsList"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', initAdmin);
+  </script>
+</body>
+</html>

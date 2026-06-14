@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>المكتبة — Vinny Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><span class="logo-v">V</span>inny <span class="logo-web">Web</span></a>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="novels.html" class="active">المكتبة</a>
+        <a href="categories.html">التصنيفات</a>
+        <a href="admin.html" class="btn-admin">لوحة الإدارة</a>
+      </div>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">الرئيسية</a>
+      <a href="novels.html">المكتبة</a>
+      <a href="categories.html">التصنيفات</a>
+      <a href="admin.html">لوحة الإدارة</a>
+    </div>
+  </nav>
+
+  <div class="page-banner">
+    <h1>المكتبة</h1>
+    <p>اكتشف مجموعتنا من الروايات المميزة</p>
+  </div>
+
+  <div class="library-container">
+    <!-- Filters -->
+    <aside class="filters-sidebar">
+      <h3 class="filter-title">🔍 البحث والفلترة</h3>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن رواية..." oninput="filterNovels()" />
+        <span class="search-icon">🔎</span>
+      </div>
+      <div class="filter-group">
+        <label>التصنيف</label>
+        <select id="catFilter" onchange="filterNovels()">
+          <option value="">الكل</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>الحالة</label>
+        <select id="statusFilter" onchange="filterNovels()">
+          <option value="">الكل</option>
+          <option value="مستمرة">مستمرة</option>
+          <option value="مكتملة">مكتملة</option>
+          <option value="متوقفة">متوقفة</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>الترتيب</label>
+        <select id="sortFilter" onchange="filterNovels()">
+          <option value="newest">الأحدث</option>
+          <option value="popular">الأكثر قراءة</option>
+          <option value="az">أ - ي</option>
+        </select>
+      </div>
+    </aside>
+
+    <!-- Grid -->
+    <main class="library-main">
+      <div class="results-info">
+        <span id="resultsCount">0 رواية</span>
+        <div class="view-toggle">
+          <button onclick="setView('grid')" id="gridBtn" class="view-btn active">⊞</button>
+          <button onclick="setView('list')" id="listBtn" class="view-btn">≡</button>
+        </div>
+      </div>
+      <div class="novels-grid" id="novelsList"></div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom"><p>© 2025 Vinny Web</p></div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      populateCatFilter();
+      filterNovels();
+    });
+  </script>
+</body>
+</html>
